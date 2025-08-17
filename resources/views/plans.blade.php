@@ -28,7 +28,7 @@
                     <h3>Plano Mensal</h1>
                     <hr>
                     <h1 class="text-center text-white">9.99$ / mês</h4>
-                    <a href="#" class="btn btn-secondary mt-3 w-100">ASSINAR</a>
+                    <a href="{{route("plan.selected", ["id" => $prices["montly"]])}}" class="btn btn-secondary mt-3 w-100">ASSINAR</a>
                 </div>
             </div>
             
@@ -37,7 +37,7 @@
                     <h3>Plano Anual</h1>
                     <hr>
                     <h1 class="text-center text-white">49.99$ / ano</h4>
-                    <a href="#" class="btn btn-success mt-3 w-100">ASSINAR</a>
+                    <a href="{{route("plan.selected", ["id" => $prices["yearly"]])}}" class="btn btn-success mt-3 w-100">ASSINAR</a>
                     <p class="text-center text-warning mt-3">Mais Popular</p>
                 </div>
             </div>
@@ -47,7 +47,7 @@
                     <h3>Plano Tri Anual</h1>
                     <hr>
                     <h1 class="text-center text-white">100.99$</h4>
-                    <a href="#" class="btn btn-warning mt-3 w-100">ASSINAR</a>
+                    <a href="{{route("plan.selected", ["id" => $prices["longest"]])}}" class="btn btn-warning mt-3 w-100">ASSINAR</a>
     
                 </div>
             </div>

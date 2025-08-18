@@ -21,6 +21,8 @@ class MainController extends Controller
             auth()->login($user);
             return redirect()->route("plans");
         }
+        auth()->login($user);
+        return redirect()->route("plans");
     }
 
     public function logout()
@@ -65,6 +67,18 @@ class MainController extends Controller
     }
 
     public function dashboard(){
-        return view("dashboard");
+
+        $data = [];
+        $user = auth()->user();
+
+
+//check the expiration of the subscription
+        $timestamp = auth()->user()->subscription(env("STRIPE_PRODUCT_ID"))
+            ->asStripeSubscription()
+            ->current_period_end;
+
+        $data["subscription_end"] = date("d/m/Y H:i:s", $timestamp);
+
+        return view("dashboard", $data);
     }
 }

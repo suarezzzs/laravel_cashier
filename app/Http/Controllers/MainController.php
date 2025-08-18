@@ -47,8 +47,24 @@ class MainController extends Controller
             return redirect()->route("plans")->withErrors("Plano inválido.");
         }
 
-        $data = explode("|", $plan);
-        echo "Product ID: " . $data[0] . "<br>";
-        echo "Price ID: " . $data[1] . "<br>";
+        $plan = explode("|", $plan);
+        $productId = $plan[0];
+        $priceId = $plan[1];
+
+        return auth()->user()
+            ->newSubscription($productId, $priceId)
+            ->checkout([
+                'success_url' => route('subscription.success'),
+                'cancel_url' => route('plans'),
+            ]);
+    }
+
+    public function subscriptionSuccess()
+    {
+        echo "Assinatura realizada com sucesso!";
+    }
+
+    public function dashboard(){
+        echo "Bem-vindo ao seu painel de controle!";
     }
 }

@@ -24,9 +24,17 @@
     </div>
 
     <hr>
-    <div class="container">
+    <div class="text-center">
         <p>Subiscrição termina em: <strong>{{$subscription_end}}</strong></p>
     </div>
+
+    <hr>
+
+    @foreach ($invoices as $invoice)
+        <div class="text-center">
+            <a href="{{ route('invoice.download', $invoice->id ) }}" class="btn btn-primary mb-3">Download PDF</a>
+        </div>
+    @endforeach
 
 </body>
 </html>

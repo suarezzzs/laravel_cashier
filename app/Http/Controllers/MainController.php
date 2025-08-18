@@ -79,6 +79,16 @@ class MainController extends Controller
 
         $data["subscription_end"] = date("d/m/Y H:i:s", $timestamp);
 
+
+        // get invoices
+        $invoices = auth()->user()->invoices();
+        $data["invoices"] = $invoices;
+
         return view("dashboard", $data);
+    }
+
+    public function invoiceDownload($id)
+    {
+        return auth()->user()->downloadInvoice($id);
     }
 }
